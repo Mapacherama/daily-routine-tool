@@ -2,9 +2,33 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
   color: #333;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+  color: #000; /* Ensures text inside input fields is black */
+  background-color: #fff; /* Keeps the input background clean and white */
+}
+
+input:focus {
+  border-color: #007aff;
 }
 
 /* Container */
@@ -58,12 +82,12 @@ body, html {
 }
 
 .button {
-  font-size: 1rem;
-  padding: 0.75rem 1.5rem;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 /* Primary Button */

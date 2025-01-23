@@ -5,7 +5,7 @@
     <!-- Form for Adding Activities -->
     <form @submit.prevent="addActivity" class="form">
       <label for="task">Activity Name:</label>
-      <input id="task" v-model="newActivity.name" required />
+      <input id="task" v-model="newActivity.name" placeholder="e.g., Morning Yoga" required />
 
       <label for="start-time">Start Time:</label>
       <input id="start-time" type="time" v-model="newActivity.startTime" required />
@@ -13,7 +13,7 @@
       <label for="end-time">End Time:</label>
       <input id="end-time" type="time" v-model="newActivity.endTime" required />
 
-      <button type="submit">Add Activity</button>
+      <button type="submit" class="button primary">Add Activity</button>
     </form>
 
     <!-- Draggable List -->
@@ -25,8 +25,11 @@
     >
       <template #item="{ element, index }">
         <div class="activity-item">
-          <p>{{ element.name }} ({{ element.startTime }} - {{ element.endTime }})</p>
-          <button @click="removeActivity(index)">Remove</button>
+          <p class="activity-text">
+            <span class="activity-name">{{ element.name }}</span>
+            <span class="activity-time">{{ element.startTime }} - {{ element.endTime }}</span>
+          </p>
+          <button @click="removeActivity(index)" class="button secondary">Remove</button>
         </div>
       </template>
     </draggable>
@@ -54,7 +57,6 @@ export default {
       this.activities.splice(index, 1);
     },
     onMove(evt) {
-      // Optional callback for controlling drag behavior
       console.log("Moved item:", evt);
     },
   },
@@ -62,39 +64,75 @@ export default {
 </script>
 
 <style>
-/* Basic Styling */
+/* General Styling */
+
 .routine-builder {
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 600px;
   margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
+/* Draggable List */
 .activity-list {
   margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #ddd;
   border-radius: 5px;
 }
 
 .activity-item {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  background-color: #fafafa;
+  transition: background-color 0.2s;
 }
 
-button {
-  padding: 5px 10px;
-  cursor: pointer;
+.activity-item:hover {
+  background-color: #f0f0f0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-text {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.activity-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.activity-time {
+  display: block;
+  font-size: 14px;
+  color: #888;
+  margin-top: 4px;
 }
 </style>
