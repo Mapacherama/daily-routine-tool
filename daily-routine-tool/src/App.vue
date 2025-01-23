@@ -41,35 +41,6 @@ body, html {
   color: #333;
 }
 
-.routine-builder {
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.activity-list {
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.activity-item {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
-}
 /* Container */
 .container {
   display: flex;
