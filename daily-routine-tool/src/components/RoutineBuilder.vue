@@ -34,6 +34,9 @@
       </template>
     </draggable>
 
+    <!-- Timeline View -->
+    <TimelineView :activities="activities" />
+
     <!-- Save/Load Buttons -->
     <div class="routine-actions">
       <button @click="saveRoutine" class="button primary">Save Routine</button>
@@ -44,9 +47,10 @@
 
 <script>
 import draggable from "vuedraggable";
+import TimelineView from "@/components/TimelineView.vue";
 
 export default {
-  components: { draggable },
+  components: { draggable, TimelineView },
   data() {
     return {
       newActivity: { name: "", startTime: "", endTime: "" },
