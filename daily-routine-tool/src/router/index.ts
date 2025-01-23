@@ -11,7 +11,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 
 import RoutineBuilder from '@/components/RoutineBuilder.vue'
 import Home from '@/views/Home.vue'
-
+import TimelineView from '@/components/TimelineView.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path:"/routine-builder",
     name: "Routine-Builder",
     component: RoutineBuilder,
+  },
+  {
+    path:"/timeline-view",
+    name: "Timeline-View",
+    component: TimelineView,
   }
 ];
 
