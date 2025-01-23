@@ -33,6 +33,12 @@
         </div>
       </template>
     </draggable>
+
+    <!-- Save/Load Buttons -->
+    <div class="routine-actions">
+      <button @click="saveRoutine" class="button primary">Save Routine</button>
+      <button @click="loadRoutine" class="button secondary">Load Routine</button>
+    </div>
   </div>
 </template>
 
@@ -59,13 +65,24 @@ export default {
     onMove(evt) {
       console.log("Moved item:", evt);
     },
+    saveRoutine() {
+      localStorage.setItem("dailyRoutine", JSON.stringify(this.activities));
+      alert("Routine saved!");
+    },
+    loadRoutine() {
+      const savedRoutine = localStorage.getItem("dailyRoutine");
+      if (savedRoutine) {
+        this.activities = JSON.parse(savedRoutine);
+      } else {
+        alert("No routine found to load.");
+      }
+    },
   },
 };
 </script>
 
 <style>
 /* General Styling */
-
 .routine-builder {
   padding: 40px 20px;
   max-width: 600px;
@@ -88,6 +105,54 @@ h1 {
   flex-direction: column;
   gap: 15px;
   margin-bottom: 30px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007aff;
+}
+
+.button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button.primary {
+  background-color: #007aff;
+  color: white;
+}
+
+.button.primary:hover {
+  background-color: #005bb5;
+}
+
+.button.secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.button.secondary:hover {
+  background-color: #ddd;
 }
 
 /* Draggable List */
@@ -134,5 +199,13 @@ h1 {
   font-size: 14px;
   color: #888;
   margin-top: 4px;
+}
+
+/* Save/Load Buttons */
+.routine-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 </style>
