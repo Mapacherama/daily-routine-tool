@@ -13,6 +13,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     RoutineBuilder: typeof import('./components/RoutineBuilder.vue')['default']
+    RoutineViewer: typeof import('./components/RoutineViewer.vue')['default']
     TimelineView: typeof import('./components/TimelineView.vue')['default']
     TimeSelector: typeof import('./components/TimeSelector.vue')['default']
   }

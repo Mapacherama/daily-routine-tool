@@ -32,12 +32,16 @@ export default {
       console.log("Creating a new routine...");
     },
     loadRoutine() {
-      const savedRoutine = localStorage.getItem("dailyRoutine"); // Retrieve routine
-      if (savedRoutine) {
-        this.activities = JSON.parse(savedRoutine); // Parse and load routine
-        alert("Routine loaded successfully!");
+      if (isLocalStorageAvailable()) {
+        const savedRoutine = localStorage.getItem("dailyRoutine");
+        if (savedRoutine) {
+          this.activities = JSON.parse(savedRoutine);
+          alert("Routine loaded successfully!");
+        } else {
+          alert("No routine found to load.");
+        }
       } else {
-        alert("No routine found to load.");
+        alert("localStorage is not available. Routine cannot be loaded.");
       }
     },
   },
