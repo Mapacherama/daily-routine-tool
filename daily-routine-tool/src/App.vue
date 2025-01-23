@@ -16,12 +16,18 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
   name: "App",
+  setup() {
+    const router = useRouter();
+    return { router };
+  },
   methods: {
     createRoutine() {
       // Navigate to the routine creation page (placeholder for now)
-      alert("Navigating to the routine creation page...");
+      this.$router.push('/routine-builder');
     },
     loadRoutine() {
       // Load a saved routine from localStorage (placeholder for now)
